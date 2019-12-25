@@ -25,7 +25,7 @@
         return (document.getElementsByName(name)[0] || 0).content;
     }
 
-    var defaultNetworkName = ['qzone', 'qq', 'weibo', 'douban', 'linkedin', 'facebook', 'twitter', 'google'];
+    var defaultNetworkName = ['qzone', 'qq', 'weibo', 'douban', 'linkedin', 'facebook', 'twitter', 'google', 'tieba'];
     var defaultNetworks = {
         qzone: 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{URL}}&title={{TITLE}}&desc={{DESCRIPTION}}&summary={{SUMMARY}}&site={{SOURCE}}&pics={{IMAGE}}',
         qq: 'http://connect.qq.com/widget/shareqq/index.html?url={{URL}}&title={{TITLE}}&source={{SOURCE}}&desc={{DESCRIPTION}}&pics={{IMAGE}}',
@@ -36,7 +36,8 @@
         linkedin: 'http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{TITLE}}&url={{URL}}&summary={{SUMMARY}}&source={{SOURCE}}&armin=armin',
         facebook: 'https://www.facebook.com/sharer/sharer.php?u={{URL}}&title={{TITLE}}&description={{DESCRIPTION}}&caption={{SUBHEAD}}&link={{URL}}&picture={{IMAGE}}',
         twitter: 'https://twitter.com/intent/tweet?text={{TITLE}}&url={{URL}}&via={{SITE_URL}}',
-        google: 'https://plus.google.com/share?url={{URL}}'
+        google: 'https://plus.google.com/share?url={{URL}}',
+        tieba: 'http://tieba.baidu.com/f/commit/share/openShareApi?url={{URL}}&title={{TITLE}}&desc={{DESCRIPTION}}&comment={{DESCRIPTION}}',
     };
     var sizes = {
         mini: '20px',
@@ -50,9 +51,7 @@
     if (shareDom === undefined || shareDom === '' || shareDom === null) {
         return false;
     }
-
     createHtml(shareDom);
-
     function template(network) {
         var size = shareDom.getAttribute('size') ? shareDom.getAttribute('size') : 'normal';
         var image = document.createElement("img");
